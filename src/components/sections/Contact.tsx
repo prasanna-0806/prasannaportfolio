@@ -13,7 +13,7 @@ const links = [
   { icon: 'ph:envelope-fill',      label: 'Email',    value: 'eduprasanna0013@gmail.com',   href: 'mailto:eduprasanna0013@gmail.com', color: '#F57799'  },
   { icon: 'ph:linkedin-logo-fill', label: 'LinkedIn', value: 'linkedin.com/in/prasanna-rdl', href: 'https://linkedin.com/in/prasanna-rdl', color: '#60a5fa' },
   { icon: 'ph:github-logo-fill',   label: 'GitHub',   value: 'github.com/prasanna-0806',    href: 'https://github.com/prasanna-0806',    color: '#1A0D08' },
-  { icon: 'ph:map-pin-fill',       label: 'Location', value: 'Visakhapatnam, India',         href: null,                                  color: '#F59E0B' },
+  { icon: 'ph:map-pin-fill',       label: 'Location', value: 'Visakhapatnam, India',         href: 'https://www.google.com/maps/search/?api=1&query=Visakhapatnam%2C%20India', color: '#F59E0B' },
 ]
 
 export default function Contact() {
