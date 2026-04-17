@@ -117,9 +117,9 @@ export default function Hero({ introDone = true }: { introDone?: boolean }) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div
-        className="absolute inset-0 z-0 pointer-events-none hidden lg:block"
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={introDone ? { opacity: 0.5, scale: 1 } : { opacity: 0, scale: 1.08 }}
+        className={`absolute inset-0 z-0 pointer-events-none transition-opacity duration-700 ${introDone ? 'opacity-35 lg:opacity-50' : 'opacity-0'}`}
+        initial={{ scale: 1.08 }}
+        animate={introDone ? { scale: 1 } : { scale: 1.08 }}
         transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
       >
         <SpacePlanet />
