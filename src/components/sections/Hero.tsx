@@ -133,10 +133,10 @@ export default function Hero() {
 
             <motion.div variants={item} className="leading-none space-y-1" style={{ perspective: '600px' }}>
               <div className="font-display tracking-tight text-[2rem] sm:text-7xl xl:text-8xl whitespace-nowrap leading-[0.88]">
-                <ScrambleName text="PRASANNA" startDelay={0} lockedColor="#F57799" />
+                <ScrambleName text="PRASANNA" startDelay={1400} lockedColor="#F57799" />
               </div>
               <div className="font-display text-[2rem] sm:text-7xl xl:text-8xl tracking-tight whitespace-nowrap leading-[0.88]">
-                <ScrambleName text="RDL" startDelay={1200} lockedColor="#1A0D08" />
+                <ScrambleName text="RDL" startDelay={2600} lockedColor="#1A0D08" />
               </div>
             </motion.div>
 
