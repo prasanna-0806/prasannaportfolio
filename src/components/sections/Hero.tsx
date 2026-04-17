@@ -94,20 +94,31 @@ function RoleCycle({ words }: { words: string[] }) {
   )
 }
 
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } } }
 const item = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } }
 
 export default function Hero() {
   const { scrollYProgress } = useScroll()
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 400])
+  const [contentReady, setContentReady] = useState(false)
   const emailAddress = personalInfo.email
   const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent('Portfolio inquiry')}&body=${encodeURIComponent('Hi Prasanna,')}`
 
+  useEffect(() => {
+    const t = setTimeout(() => setContentReady(true), 1100)
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-50 hidden lg:block">
+      <motion.div
+        className="absolute inset-0 z-0 pointer-events-none hidden lg:block"
+        initial={{ opacity: 0, scale: 1.08 }}
+        animate={{ opacity: 0.5, scale: 1 }}
+        transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+      >
         <SpacePlanet />
-      </div>
+      </motion.div>
       <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
@@ -115,7 +126,7 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
-        <motion.div variants={stagger} initial="hidden" animate="show"
+        <motion.div variants={stagger} initial="hidden" animate={contentReady ? "show" : "hidden"}
           className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
 
           {/* LEFT — name + bio */}
@@ -126,14 +137,14 @@ export default function Hero() {
               hello! i&apos;m
             </motion.p>
 
-            <div className="leading-none space-y-1" style={{ perspective: '600px' }}>
+            <motion.div variants={item} className="leading-none space-y-1" style={{ perspective: '600px' }}>
               <div className="font-display tracking-tight text-[2rem] sm:text-7xl xl:text-8xl whitespace-nowrap leading-[0.88]">
-                <ScrambleName text="PRASANNA" startDelay={200} lockedColor="#F57799" />
+                {contentReady && <ScrambleName text="PRASANNA" startDelay={0} lockedColor="#F57799" />}
               </div>
               <div className="font-display text-[2rem] sm:text-7xl xl:text-8xl tracking-tight whitespace-nowrap leading-[0.88]">
-                <ScrambleName text="RDL" startDelay={1400} lockedColor="#1A0D08" />
+                {contentReady && <ScrambleName text="RDL" startDelay={1200} lockedColor="#1A0D08" />}
               </div>
-            </div>
+            </motion.div>
 
             <motion.div variants={item} className="flex items-center">
               <RoleCycle words={personalInfo.roles} />
@@ -201,7 +212,7 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3 }}
+        transition={{ delay: 4 }}
       >
         <div
           className="w-6 h-10 rounded-full flex justify-center pt-2.5"
