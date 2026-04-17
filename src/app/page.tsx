@@ -43,9 +43,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-[#F0E0CC]">
-      <div className="hidden md:block">
-        <IntroAnimation onComplete={() => setIntroDone(true)} />
-      </div>
+      <IntroAnimation onComplete={() => setIntroDone(true)} />
 
       {/* Static ambient blobs — CSS only, no JS */}
       <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">

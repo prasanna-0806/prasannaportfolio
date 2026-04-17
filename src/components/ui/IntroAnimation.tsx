@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [stage, setStage] = useState(0) // 0: star, 1: burst, 2: text, 3: fade
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -13,10 +14,14 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
     const ctx = canvas.getContext('2d', { willReadFrequently: true })
     if (!ctx) return
 
+    const updateMobileState = () => setIsMobile(window.innerWidth < 768)
+
     let width = window.innerWidth
     let height = window.innerHeight
     canvas.width = width
     canvas.height = height
+
+    updateMobileState()
 
     let animId: number
     let particles: any[] = []
@@ -183,10 +188,12 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
       // Recalculating points midway is heavy, so we assume fixed size during intro
     }
     window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', updateMobileState)
 
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', updateMobileState)
     }
   }, [onComplete])
 
@@ -203,6 +210,16 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
             ref={canvasRef}
             className="block w-full h-full"
           />
+
+          {isMobile && stage < 3 && (
+            <div className="absolute inset-0 flex items-center justify-center px-6">
+              <div className="text-center font-display font-black leading-[0.9] tracking-tight" style={{ color: '#1A0D08', textShadow: '0 0 18px rgba(245,119,153,0.15)' }}>
+                <div className="text-[clamp(2.2rem,12vw,4rem)] text-[#F57799]">loading</div>
+                <div className="text-[clamp(2.2rem,12vw,4rem)] text-[#D44070]">cool</div>
+                <div className="text-[clamp(2.2rem,12vw,4rem)] text-[#1A0D08]">stuff...</div>
+              </div>
+            </div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

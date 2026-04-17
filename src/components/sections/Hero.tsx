@@ -50,7 +50,7 @@ function ScrambleName({ text, startDelay = 0, lockedColor = '#ffffff' }: { text:
   }, [])
 
   return (
-    <span className="inline-block">
+    <span className="inline-flex whitespace-nowrap leading-none align-baseline">
       {letters.map((ch, i) => (
         <motion.span
           key={i}
@@ -127,10 +127,10 @@ export default function Hero() {
             </motion.p>
 
             <div className="leading-none space-y-1" style={{ perspective: '600px' }}>
-              <div className="font-display tracking-tight text-[3.45rem] sm:text-7xl xl:text-8xl whitespace-nowrap leading-[0.88]">
+              <div className="font-display tracking-tight text-[2.8rem] sm:text-7xl xl:text-8xl whitespace-nowrap leading-[0.88]">
                 <ScrambleName text="PRASANNA" startDelay={200} lockedColor="#F57799" />
               </div>
-              <div className="font-display text-[3.45rem] sm:text-7xl xl:text-8xl tracking-tight whitespace-nowrap leading-[0.88]">
+              <div className="font-display text-[2.8rem] sm:text-7xl xl:text-8xl tracking-tight whitespace-nowrap leading-[0.88]">
                 <ScrambleName text="RDL" startDelay={1400} lockedColor="#1A0D08" />
               </div>
             </div>
