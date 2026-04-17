@@ -43,7 +43,9 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-[#F0E0CC]">
-      <IntroAnimation onComplete={() => setIntroDone(true)} />
+      <div className="hidden md:block">
+        <IntroAnimation onComplete={() => setIntroDone(true)} />
+      </div>
 
       {/* Static ambient blobs — CSS only, no JS */}
       <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
@@ -66,28 +68,25 @@ export default function Home() {
 
       <StarField />
       
-      {introDone && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-        >
-          <ScrollProgress />
-          <ScrollConnector />
-          <Navbar />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+      >
+        <ScrollProgress />
+        <ScrollConnector />
+        <Navbar />
 
-          <div className="relative z-10">
-            
-            <Hero />
-            <SectionUnlock><About /></SectionUnlock>
-            <SectionUnlock><Skills /></SectionUnlock>
-            <SectionUnlock><Projects /></SectionUnlock>
-            <SectionUnlock><Experience /></SectionUnlock>
-            <SectionUnlock><Leadership /></SectionUnlock>
-            <SectionUnlock><Contact /></SectionUnlock>
-          </div>
-        </motion.div>
-      )}
+        <div className="relative z-10">
+          <Hero />
+          <SectionUnlock><About /></SectionUnlock>
+          <SectionUnlock><Skills /></SectionUnlock>
+          <SectionUnlock><Projects /></SectionUnlock>
+          <SectionUnlock><Experience /></SectionUnlock>
+          <SectionUnlock><Leadership /></SectionUnlock>
+          <SectionUnlock><Contact /></SectionUnlock>
+        </div>
+      </motion.div>
     </main>
   )
 }

@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 import SectionTitle from '@/components/ui/SectionTitle'
 import GlowButton from '@/components/ui/GlowButton'
 import { Icon } from '@iconify/react'
@@ -63,28 +62,22 @@ export default function Contact() {
     emailInputRef.current?.setCustomValidity('')
     setStatus('loading')
     try {
-      const now = new Date().toLocaleString('en-IN', {
-        dateStyle: 'medium',
-        timeStyle: 'short',
-      })
-
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-        {
-          // Existing keys
-          from_name: form.name,
-          from_email: form.email,
-          to_name: 'Prasanna',
-          message: form.message,
-          // Template-friendly aliases
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           name: form.name,
           email: form.email,
-          title: 'New Portfolio Contact',
-          time: now,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
-      )
+          message: form.message,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
       setStatus('success')
       if (successTimerRef.current) {
         clearTimeout(successTimerRef.current)
