@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/durga/portfolioanti/src -name \"*.tsx\" -exec sed -i 's/font-comfortaa/font-display/g' {} \\\\;)",
+      "Bash(find /c/Users/durga/portfolioanti/src -name \"*.tsx\" -exec sed -i 's/font-inter/font-syne/g' {} \\\\;)",
+      "Bash(find /c/Users/durga/portfolioanti/src -name \"*.tsx\" -exec sed -i \"s/'rgba\\(13,0,28,0.7\\)'/'rgba\\(28,30,40,0.8\\)'/g\" {} \\\\;)",
+      "Bash(find /c/Users/durga/portfolioanti/src -name \"*.tsx\" -exec sed -i \"s/'#080010'/'#0D0E17'/g\" {} \\\\;)",
+      "Bash(find /c/Users/durga/portfolioanti/src -name \"*.tsx\" -exec sed -i \"s/'#0a0014'/'#161820'/g\" {} \\\\;)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s http://localhost:3003)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(sed -i \"s/glass border border-white\\\\/6/rounded-3xl/g; s/'rgba\\(13,0,28,0.7\\)'/'rgba\\(30,22,45,0.8\\)'/g; s/rgba\\(13,0,28,0.7\\)/rgba\\(30,22,45,0.8\\)/g; s/border-white\\\\/6/border-[rgba\\(245,240,232,0.06\\)]/g\" /c/Users/durga/portfolioanti/src/components/sections/Leadership.tsx)",
+      "Bash(sed -i \"s/glass border/rounded-3xl border/g; s/'rgba\\(13,0,28,0.7\\)'/'rgba\\(30,22,45,0.8\\)'/g; s/rgba\\(13,0,28,0.7\\)/rgba\\(30,22,45,0.8\\)/g; s/#020010/#0F0C1A/g\" /c/Users/durga/portfolioanti/src/components/sections/Experience.tsx)",
+      "Bash(sed -i \"s/text-white text-lg tracking-wide uppercase/text-\\\\[#1A0D08\\\\] text-lg tracking-wide uppercase/g\" src/components/sections/Projects.tsx)",
+      "Bash(sed -i \"s/text-gray-400 hover:text-white transition-colors\\\\\"/text-\\\\[#A08070\\\\] hover:text-\\\\[#1A0D08\\\\] transition-colors\\\\\"/g\" src/components/sections/Projects.tsx)",
+      "Bash(sed -i \"s/text-gray-400 hover:text-white\\\\\"/text-\\\\[#A08070\\\\] hover:text-\\\\[#1A0D08\\\\]\\\\\"/g\" src/components/sections/Skills.tsx)",
+      "Bash(sed -i \"s/#FFF8F3/#F0E0CC/g\" src/app/globals.css)",
+      "Bash(sed -i \"s/#FFF8F3/#F0E0CC/g\" src/app/page.tsx)",
+      "Bash(sed -i \"s/#FFF8F3/#F0E0CC/g\" tailwind.config.ts)",
+      "Bash(sed -i \"s/background: '#FFF8F3'/background: '#F0E0CC'/g\" src/components/sections/Experience.tsx)",
+      "Bash(sed -i \"s/via-white\\\\/6/via-[#F57799]\\\\/8/g\" src/components/ui/GlowButton.tsx)",
+      "Bash(sed -i \"s/color: '#FDC3A1' }>/color: '#D4604A' }}>/g\" src/components/sections/About.tsx)",
+      "Bash(sed -i \"s/background: '#FDC3A1' }>/background: '#F57799' }}>/g\" src/components/sections/About.tsx)",
+      "Bash(sed -i \"s/background: 'rgba\\(255,244,234,0\\\\.95\\)'/background: 'rgba\\(248,232,210,0.82\\)', backdropFilter: 'blur\\(10px\\)', WebkitBackdropFilter: 'blur\\(10px\\)'/g\" src/components/sections/Contact.tsx)",
+      "Bash(sed -i \"s/background: 'rgba\\(255,250,245,1\\)'/background: 'rgba\\(248,232,210,0.9\\)', backdropFilter: 'blur\\(10px\\)', WebkitBackdropFilter: 'blur\\(10px\\)'/g\" src/components/sections/Contact.tsx)"
+    ]
+  }
+}
