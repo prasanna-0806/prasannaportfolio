@@ -192,22 +192,22 @@ export default function Contact() {
                 {step >= 0 && (
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
                     <p style={{ color: '#F57799' }}>$ what's your name?</p>
-                    <div className="ml-4 mt-3 relative flex items-center gap-3">
-                      <span style={{ color: '#00d4ff' }}>&gt; </span>
-                      <input
-                        ref={nameInputRef}
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        onKeyDown={(e) => handleKeyDown(e, 1)}
-                        className="bg-transparent border-b-2 outline-none text-sm flex-1"
-                        style={{ borderColor: '#F57799', color: '#1A0D08' }}
-                        placeholder="John"
-                      />
-                      <span style={{ color: '#C0A090', fontSize: '11px' }} className="text-xs whitespace-nowrap ml-2">
-                        ↵ enter
-                      </span>
+                    <div className="ml-4 mt-3">
+                      <div className="relative flex items-center gap-3">
+                        <span style={{ color: '#00d4ff' }}>&gt; </span>
+                        <input
+                          ref={nameInputRef}
+                          type="text"
+                          name="name"
+                          value={form.name}
+                          onChange={handleChange}
+                          onKeyDown={(e) => handleKeyDown(e, 1)}
+                          className="bg-transparent border-b-2 outline-none text-sm flex-1 min-w-0"
+                          style={{ borderColor: '#F57799', color: '#1A0D08' }}
+                          placeholder="John"
+                        />
+                      </div>
+                      <p style={{ color: '#C0A090', fontSize: '11px' }} className="mt-1 ml-4">↵ enter</p>
                     </div>
                   </motion.div>
                 )}
@@ -217,25 +217,25 @@ export default function Contact() {
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
                     {form.name && <p style={{ color: '#5C3D2A' }} className="ml-4 mb-2">Thanks, <span style={{ color: '#F57799' }}>{form.name}</span>!</p>}
                     <p style={{ color: '#F57799' }}>$ what's your email?</p>
-                    <div className="ml-4 mt-3 relative flex items-center gap-3">
-                      <span style={{ color: '#00d4ff' }}>&gt; </span>
-                      <input
-                        ref={emailInputRef}
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        onKeyDown={(e) => handleKeyDown(e, 2)}
-                        required
-                        pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                        autoFocus={step === 1}
-                        className="bg-transparent border-b-2 outline-none text-sm flex-1"
-                        style={{ borderColor: '#F57799', color: '#1A0D08' }}
-                        placeholder="you@example.com"
-                      />
-                      <span style={{ color: '#C0A090', fontSize: '11px' }} className="text-xs whitespace-nowrap ml-2">
-                        ↵ enter
-                      </span>
+                    <div className="ml-4 mt-3">
+                      <div className="relative flex items-center gap-3">
+                        <span style={{ color: '#00d4ff' }}>&gt; </span>
+                        <input
+                          ref={emailInputRef}
+                          type="email"
+                          name="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          onKeyDown={(e) => handleKeyDown(e, 2)}
+                          required
+                          pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                          autoFocus={step === 1}
+                          className="bg-transparent border-b-2 outline-none text-sm flex-1 min-w-0"
+                          style={{ borderColor: '#F57799', color: '#1A0D08' }}
+                          placeholder="you@example.com"
+                        />
+                      </div>
+                      <p style={{ color: '#C0A090', fontSize: '11px' }} className="mt-1 ml-4">↵ enter</p>
                     </div>
                   </motion.div>
                 )}

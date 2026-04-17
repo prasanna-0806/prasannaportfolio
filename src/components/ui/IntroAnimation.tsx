@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [stage, setStage] = useState(0) // 0: star, 1: burst, 2: text, 3: fade
-  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -14,14 +13,10 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
     const ctx = canvas.getContext('2d', { willReadFrequently: true })
     if (!ctx) return
 
-    const updateMobileState = () => setIsMobile(window.innerWidth < 768)
-
     let width = window.innerWidth
     let height = window.innerHeight
     canvas.width = width
     canvas.height = height
-
-    updateMobileState()
 
     let animId: number
     let particles: any[] = []
@@ -29,35 +24,63 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
 
     // ── STEP 1: Get text particle targets ──
     const getTextPoints = () => {
+      const isMobileScreen = width < 768
       const tempCanvas = document.createElement('canvas')
       const tCtx = tempCanvas.getContext('2d')!
-      
+
+      if (isMobileScreen) {
+        const fontSize = 64
+        const lineH = Math.round(fontSize * 1.25)
+        const lines = ['loading', 'cool', 'stuff...']
+        const canvasW = Math.round(width * 0.9)
+        const totalH = lineH * lines.length
+        tempCanvas.width = canvasW
+        tempCanvas.height = totalH
+        tCtx.font = `900 ${fontSize}px Arial, sans-serif`
+        tCtx.fillStyle = '#fff'
+        tCtx.textAlign = 'center'
+        tCtx.textBaseline = 'middle'
+        lines.forEach((line, i) => {
+          tCtx.fillText(line, canvasW / 2, lineH * i + lineH / 2)
+        })
+        const imgData = tCtx.getImageData(0, 0, canvasW, totalH).data
+        const points = []
+        const step = 3
+        const offsetX = (width - canvasW) / 2
+        const offsetY = height / 2 - totalH / 2
+        for (let y = 0; y < totalH; y += step) {
+          for (let x = 0; x < canvasW; x += step) {
+            const i = (y * canvasW + x) * 4
+            if (imgData[i + 3] > 128) {
+              points.push({
+                x: x + offsetX + (Math.random() * 2 - 1),
+                y: y + offsetY + (Math.random() * 2 - 1),
+              })
+            }
+          }
+        }
+        return points
+      }
+
       const MAX_WIDTH = Math.min(width * 0.92, 1100)
       tempCanvas.width = MAX_WIDTH
       tempCanvas.height = 200
-      
-      const fontSize = width < 768 ? 32 : 58
-      tCtx.font = `900 ${fontSize}px Arial, sans-serif`
+      tCtx.font = `900 58px Arial, sans-serif`
       tCtx.fillStyle = '#fff'
       tCtx.textAlign = 'center'
       tCtx.textBaseline = 'middle'
       tCtx.fillText('loading cool stuff...', MAX_WIDTH / 2, 100)
-
       const imgData = tCtx.getImageData(0, 0, MAX_WIDTH, 300).data
       const points = []
-      
-      const step = width < 768 ? 2 : 3 // Density — smaller = more particles = clearer text
-      
       const offsetX = (width - MAX_WIDTH) / 2
       const offsetY = height / 2 - 100
-
-      for (let y = 0; y < 200; y += step) {
-        for (let x = 0; x < MAX_WIDTH; x += step) {
+      for (let y = 0; y < 200; y += 3) {
+        for (let x = 0; x < MAX_WIDTH; x += 3) {
           const i = (y * MAX_WIDTH + x) * 4
           if (imgData[i + 3] > 128) {
             points.push({
               x: x + offsetX,
-              y: y + offsetY + (Math.random() * 2 - 1) * 2
+              y: y + offsetY + (Math.random() * 2 - 1) * 2,
             })
           }
         }
@@ -81,7 +104,7 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
         ty: targetPoints[i].y,
         vx: (Math.random() - 0.5) * 20,
         vy: (Math.random() - 0.5) * 20,
-        size: Math.random() * 2 + 0.5,
+        size: Math.random() * (width < 768 ? 3 : 2) + (width < 768 ? 1.5 : 0.5),
         color: colors[Math.floor(Math.random() * colors.length)],
         alpha: 0
       })
@@ -188,12 +211,10 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
       // Recalculating points midway is heavy, so we assume fixed size during intro
     }
     window.addEventListener('resize', handleResize)
-    window.addEventListener('resize', updateMobileState)
 
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('resize', updateMobileState)
     }
   }, [onComplete])
 
@@ -211,15 +232,6 @@ export default function IntroAnimation({ onComplete }: { onComplete: () => void 
             className="block w-full h-full"
           />
 
-          {isMobile && stage < 3 && (
-            <div className="absolute inset-0 flex items-center justify-center px-6">
-              <div className="text-center font-display font-black leading-[0.9] tracking-tight" style={{ color: '#1A0D08', textShadow: '0 0 18px rgba(245,119,153,0.15)' }}>
-                <div className="text-[clamp(2.2rem,12vw,4rem)] text-[#F57799]">loading</div>
-                <div className="text-[clamp(2.2rem,12vw,4rem)] text-[#D44070]">cool</div>
-                <div className="text-[clamp(2.2rem,12vw,4rem)] text-[#1A0D08]">stuff...</div>
-              </div>
-            </div>
-          )}
         </motion.div>
       )}
     </AnimatePresence>
