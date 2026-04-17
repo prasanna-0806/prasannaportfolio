@@ -76,7 +76,7 @@ export default function Home() {
         <Navbar />
 
         <div className="relative z-10">
-          <Hero />
+          <Hero introDone={introDone} />
           <SectionUnlock><About /></SectionUnlock>
           <SectionUnlock><Skills /></SectionUnlock>
           <SectionUnlock><Projects /></SectionUnlock>

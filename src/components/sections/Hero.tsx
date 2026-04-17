@@ -94,21 +94,32 @@ function RoleCycle({ words }: { words: string[] }) {
   )
 }
 
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.15, delayChildren: 1.2 } } }
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } } }
 const item = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } }
 
-export default function Hero() {
+export default function Hero({ introDone = true }: { introDone?: boolean }) {
   const { scrollYProgress } = useScroll()
   const yBg = useTransform(scrollYProgress, [0, 1], [0, 400])
+  const [contentReady, setContentReady] = useState(false)
   const emailAddress = personalInfo.email
   const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}&su=${encodeURIComponent('Portfolio inquiry')}&body=${encodeURIComponent('Hi Prasanna,')}`
+
+  useEffect(() => {
+    if (!introDone) {
+      setContentReady(false)
+      return
+    }
+
+    const t = setTimeout(() => setContentReady(true), 1100)
+    return () => clearTimeout(t)
+  }, [introDone])
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0 z-0 pointer-events-none hidden lg:block"
         initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: 0.5, scale: 1 }}
+        animate={introDone ? { opacity: 0.5, scale: 1 } : { opacity: 0, scale: 1.08 }}
         transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
       >
         <SpacePlanet />
@@ -120,7 +131,7 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 w-full">
-        <motion.div variants={stagger} initial="hidden" animate="show"
+        <motion.div variants={stagger} initial="hidden" animate={contentReady ? "show" : "hidden"}
           className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
 
           {/* LEFT — name + bio */}
@@ -133,10 +144,10 @@ export default function Hero() {
 
             <motion.div variants={item} className="leading-none space-y-1" style={{ perspective: '600px' }}>
               <div className="font-display tracking-tight text-[2rem] sm:text-7xl xl:text-8xl whitespace-nowrap leading-[0.88]">
-                <ScrambleName text="PRASANNA" startDelay={1400} lockedColor="#F57799" />
+                {contentReady && <ScrambleName text="PRASANNA" startDelay={0} lockedColor="#F57799" />}
               </div>
               <div className="font-display text-[2rem] sm:text-7xl xl:text-8xl tracking-tight whitespace-nowrap leading-[0.88]">
-                <ScrambleName text="RDL" startDelay={2600} lockedColor="#1A0D08" />
+                {contentReady && <ScrambleName text="RDL" startDelay={1200} lockedColor="#1A0D08" />}
               </div>
             </motion.div>
 
