@@ -149,7 +149,7 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
-            <a href="/PrasannaRDL-Resume.pdf" download
+            <a href="/resume.pdf" download
               className="block m-4 text-center py-3.5 text-sm font-syne font-semibold rounded-xl transition-all duration-200"
               style={{ background: 'rgba(245,119,153,0.1)', border: '1px solid rgba(245,119,153,0.3)', color: '#F57799' }}
             >
