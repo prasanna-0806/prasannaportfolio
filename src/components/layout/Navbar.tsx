@@ -88,7 +88,7 @@ export default function Navbar() {
 
         {/* Resume */}
         <motion.a
-          href="/resume.pdf"
+          href="/PrasannaRDL-Resume.pdf"
           download
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-syne font-semibold tracking-wide transition-all duration-200"
           style={{
@@ -149,7 +149,7 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
-            <a href="/resume.pdf" download
+            <a href="/PrasannaRDL-Resume.pdf" download
               className="block m-4 text-center py-3.5 text-sm font-syne font-semibold rounded-xl transition-all duration-200"
               style={{ background: 'rgba(245,119,153,0.1)', border: '1px solid rgba(245,119,153,0.3)', color: '#F57799' }}
             >
