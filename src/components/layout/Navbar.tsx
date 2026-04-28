@@ -88,7 +88,7 @@ export default function Navbar() {
 
         {/* Resume */}
         <motion.a
-          href="/PrasannaRDL-Resume.pdf"
+          href="/resume.pdf"
           download
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-syne font-semibold tracking-wide transition-all duration-200"
           style={{
