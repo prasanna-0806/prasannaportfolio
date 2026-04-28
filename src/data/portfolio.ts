@@ -169,4 +169,5 @@ export const certifications = [
   { name: 'Networking Fundamentals', issuer: 'Cisco', icon: 'ph:wifi-high', credentialUrl: '/certificates/networking_basics.pdf' },
   { name: 'Java Programming', issuer: 'Coursera', icon: 'ph:coffee', credentialUrl: '/certificates/introduction_to_java.pdf' },
   { name: 'Python Programming', issuer: 'Internshala', icon: 'ph:code', credentialUrl: '/certificates/programming_with_python.pdf' },
+  { name: 'Technology Job Simulation', issuer: 'Deloitte (Forage)', icon: 'ph:briefcase', credentialUrl: '/certificates/deloittecertificate.pdf' }
 ]
