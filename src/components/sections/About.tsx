@@ -5,16 +5,16 @@ import SectionTitle from '@/components/ui/SectionTitle'
 import { personalInfo } from '@/data/portfolio'
 
 const stats = [
-  { value: '8.73', label: 'GPA',        color: '#F57799' },
+  { value: '8.77', label: 'CGPA',       color: '#F57799' },
   { value: '3+',   label: 'Projects',   color: '#D4604A' },
   { value: '10+',  label: 'Events Led', color: '#F59E0B' },
   { value: '1',    label: 'Internship', color: '#FB9B8F' },
 ]
 
 const edu = [
-  { degree: 'B.Tech CSE',             school: 'GITAM University',      period: '2023–2027', detail: 'GPA 8.73', dot: '#F57799' },
-  { degree: 'Senior Secondary (XII)', school: 'Ascent Junior College', period: '2023',      detail: '86%',      dot: '#D4604A' },
-  { degree: 'Secondary (X)',          school: 'Bethany School',        period: '2021',      detail: '85%',      dot: '#F59E0B' },
+  { degree: 'B.Tech, Computer Science Engineering', school: 'GITAM University',      period: '2023–2027', detail: 'CGPA: 8.77', dot: '#F57799' },
+  { degree: 'Senior Secondary (XII)',               school: 'Ascent Junior College', period: '2023',      detail: '86%',        dot: '#D4604A' },
+  { degree: 'Secondary (X)',                        school: 'Bethany School',        period: '2021',      detail: '85%',        dot: '#F59E0B' },
 ]
 
 const tagColors = ['#F57799', '#D4604A', '#F59E0B', '#FB9B8F']

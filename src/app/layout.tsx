@@ -31,13 +31,13 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Prasanna RDL — Full-Stack & AI Developer',
-  description: 'Portfolio of Prasanna RDL — CS student at GITAM University.',
+  title: 'Prasanna RDL — Developer Portfolio',
+  description: 'B.Tech CSE student portfolio featuring projects, internship experience, technical skills, leadership, and contact information.',
   keywords: ['Prasanna RDL', 'Full-Stack', 'AI Engineer', 'React', 'Python', 'Portfolio'],
   authors: [{ name: 'Prasanna RDL' }],
   openGraph: {
-    title: 'Prasanna RDL — Full-Stack & AI Developer',
-    description: 'Building at the intersection of AI, full-stack, and IoT.',
+    title: 'Prasanna RDL — Developer Portfolio',
+    description: 'B.Tech CSE student portfolio featuring projects, internship experience, technical skills, leadership, and contact information.',
     type: 'website',
   },
 }

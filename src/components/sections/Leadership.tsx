@@ -34,7 +34,7 @@ export default function Leadership() {
             {leadershipRoles.map((role, i) => (
               <div key={i} className="float-card" style={{ animationDelay: `${i * 0.45}s` }}>
               <motion.div className="relative p-4 rounded-3xl transition-all duration-200 group cursor-default"
-                style={{ background: 'rgba(255,252,248,0.45)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(255,255,255,0.2)', border: '1px solid rgba(245,119,153,0.35)', borderLeft: '3px solid #F57799' }}
+                style={{ background: 'rgba(255,252,248,0.45)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(255,255,255,0.2)', border: '1px solid rgba(245,119,153,0.3)', borderLeft: '3px solid #F57799' }}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 whileHover={{ x: 3, boxShadow: '0 4px 20px rgba(245,119,153,0.15)' }}>
@@ -81,9 +81,9 @@ export default function Leadership() {
                   <span
                     className="px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold shrink-0"
                     style={{
-                      background: h.result === 'Top 5th' ? 'rgba(245,119,153,0.16)' : 'rgba(245,158,11,0.14)',
-                      border: h.result === 'Top 5th' ? '1px solid rgba(245,119,153,0.35)' : '1px solid rgba(245,158,11,0.35)',
-                      color: h.result === 'Top 5th' ? '#D44070' : '#B87300',
+                      background: h.result === 'Top 5' ? 'rgba(245,119,153,0.16)' : 'rgba(245,158,11,0.14)',
+                      border: h.result === 'Top 5' ? '1px solid rgba(245,119,153,0.35)' : '1px solid rgba(245,158,11,0.35)',
+                      color: h.result === 'Top 5' ? '#D44070' : '#B87300',
                     }}
                   >
                     {h.result}
@@ -94,7 +94,7 @@ export default function Leadership() {
             ))}
             <div className="p-4 rounded-3xl" style={{ background: 'rgba(255,252,248,0.45)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(255,255,255,0.2)', border: '1px solid rgba(245,158,11,0.3)' }}>
               <p className="text-xs leading-relaxed font-syne" style={{ color: '#7A5544' }}>
-                Participated in 4 competitive innovation events, with a Top 5th rank at InnovAIthon.
+                Participated in 4 competitive innovation events, with a Top 5 rank at InnovAIthon.
               </p>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function Leadership() {
             {certifications.map((cert, i) => (
               <div key={i} className="float-card" style={{ animationDelay: `${i * 0.4 + 0.15}s` }}>
               <motion.div className="p-4 rounded-3xl transition-all duration-200 group cursor-default"
-                style={{ background: 'rgba(255,252,248,0.45)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(255,255,255,0.2)', border: '1px solid rgba(139,74,42,0.35)', borderLeft: '3px solid #8B4A2A' }}
+                style={{ background: 'rgba(255,252,248,0.45)', backdropFilter: 'blur(18px)', WebkitBackdropFilter: 'blur(18px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -1px 0 rgba(255,255,255,0.2)', border: '1px solid rgba(139,74,42,0.3)', borderLeft: '3px solid #8B4A2A' }}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 whileHover={{ x: 3, boxShadow: '0 4px 20px rgba(139,74,42,0.15)' }}>
